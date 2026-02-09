@@ -14,10 +14,14 @@ Route::post('alumni/whatsapp-blast', [AlumniController::class, 'whatsappBlast'])
 
 
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('admin')->group(function () {
     Route::get('/alumni', [AlumniController::class, 'index'])
         ->name('alumni.index');
+
+    Route::post('/alumni/import', [AlumniController::class, 'import'])
+        ->name('alumni.import')
+        ->middleware('admin');
 });
