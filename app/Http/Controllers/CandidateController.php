@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Candidate;
+use App\Models\Position;
 
 class CandidateController extends Controller
 {
     //
-        public function store(Request $request)
+    public function create()
+    {
+        $positions = Position::orderBy('order')->get();
+        return view('admin.candidates.create', compact('positions'));
+    }
+
+    public function store(Request $request)
     {
         $request->validate([
             'nama' => 'required',
