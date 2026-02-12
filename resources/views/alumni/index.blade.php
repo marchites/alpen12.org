@@ -98,6 +98,7 @@
 
                 <div class="col-md-3 d-grid">
                     <button class="btn btn-primary">
+                        <i class="bi bi-funnel"></i>
                         Filter
                     </button>
                 </div>

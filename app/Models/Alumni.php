@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumni extends Model
 {
     //
+    protected $table = 'alumnis';
     protected $fillable = [
         'nama',
         'tahun_lulus',
@@ -16,4 +17,8 @@ class Alumni extends Model
         'email',
         'domisili'
     ];
+
+    public function votingToken() {
+        return $this->hasOne(VotingToken::class);
+    }
 }

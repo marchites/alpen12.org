@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VotingController;
+use App\Http\Controllers\Admin\VotingTokenController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +27,9 @@ Route::middleware('admin')->group(function () {
         ->name('alumni.import')
         ->middleware('admin');
 });
+
+Route::get('/vote/{token}', [VotingController::class,'index']);
+Route::post('/vote/{token}', [VotingController::class,'store']);
+Route::get('/results', [VotingController::class,'results']);
+
+Route::post('/admin/generate-token', [VotingTokenController::class,'generate']);
