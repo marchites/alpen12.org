@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 class VotingSettingController extends Controller
 {
     //
+    public function index()
+    {
+        $setting = VotingSetting::first();
+        return view('admin.settings.index', compact('setting'));
+    }
+
     public function create()
     {
         return view('admin.settings.create');

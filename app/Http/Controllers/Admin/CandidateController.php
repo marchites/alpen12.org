@@ -10,6 +10,12 @@ use App\Http\Controllers\Controller;
 class CandidateController extends Controller
 {
     //
+    public function index()
+    {
+        $candidates = Candidate::with('position')->latest()->get();
+        return view('admin.candidates.index', compact('candidates'));
+    }
+
     public function create()
     {
         $positions = Position::orderBy('order')->get();

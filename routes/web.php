@@ -27,12 +27,15 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/alumni/import', [AlumniController::class, 'import'])->name('admin.alumni.import');
     Route::post('/admin/alumni/whatsapp-blast', [AlumniController::class, 'whatsappBlast'])->name('admin.alumni.whatsapp');
 
+    Route::get('/admin/candidates', [CandidateController::class, 'index'])->name('admin.candidates.index');
     Route::get('/admin/candidates/create', [CandidateController::class, 'create'])->name('admin.candidates.create');
     Route::post('/admin/candidates', [CandidateController::class, 'store'])->name('admin.candidates.store');
 
+    Route::get('/admin/positions', [PositionController::class, 'index'])->name('admin.positions.index');
     Route::get('/admin/positions/create', [PositionController::class, 'create'])->name('admin.positions.create');
     Route::post('/admin/positions', [PositionController::class, 'store'])->name('admin.positions.store');
     
+    Route::get('/admin/settings', [VotingSettingController::class, 'index'])->name('admin.settings.index');
     Route::get('/admin/settings/create', [VotingSettingController::class, 'create'])->name('admin.settings.create');
     Route::post('/admin/settings', [VotingSettingController::class, 'store'])->name('admin.settings.store');
 

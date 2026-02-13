@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 class PositionController extends Controller
 {
     //
+    public function index()
+    {
+        $positions = Position::orderBy('order')->get();
+        return view('admin.positions.index', compact('positions'));
+    }
+
     public function create()
     {
         return view('admin.positions.create');
