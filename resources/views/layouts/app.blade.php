@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="NobleUI">
-    <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="description" content="Alumni Penerbangan SMK Negeri 12 Bandung">
+    <meta name="author" content="Alpen12">
+    <meta name="keywords" content="alpen12, penerbangan, alumni, smkn12bandung">
 
     <title>Alpen12 - Alumni Penerbangan 12</title>
 
@@ -43,7 +34,7 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
     <!-- End layout styles -->
 
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpeg') }}" />
 </head>
 
 <body>
