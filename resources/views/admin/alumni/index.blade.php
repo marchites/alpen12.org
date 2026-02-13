@@ -40,7 +40,7 @@
                 Upload file CSV (maks 2MB)
             </small>
 
-            <form action="{{ route('alumni.import') }}"
+            <form action="{{ route('admin.alumni.import') }}"
                   method="POST"
                   enctype="multipart/form-data"
                   class="row g-2">
@@ -153,7 +153,7 @@
                                 View
                             </button>
 
-                            <form action="{{ route('alumni.destroy', $a->id) }}"
+                            <form action="{{ route('admin.alumni.destroy', $a->id) }}"
                                   method="POST"
                                   class="d-inline"
                                   onsubmit="return confirm('Hapus data ini?')">
@@ -181,7 +181,7 @@
 
     {{-- ================= WHATSAPP ================= --}}
     <form method="POST"
-          action="{{ route('alumni.whatsapp') }}"
+          action="{{ route('admin.alumni.whatsapp') }}"
           id="waForm"
           class="mt-3">
         @csrf

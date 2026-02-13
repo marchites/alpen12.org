@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Alumni;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Alumni;
 
 class AlumniController extends Controller
 {
@@ -26,12 +27,12 @@ class AlumniController extends Controller
         }
 
         $alumni = $query->latest()->paginate(10)->withQueryString();
-        return view('alumni.index', compact('alumni'));
+        return view('admin.alumni.index', compact('alumni'));
     }
 
     public function create()
     {
-        return view('alumni.create');
+        return view('admin.alumni.create');
     }
 
     public function store(Request $request)
@@ -56,7 +57,7 @@ class AlumniController extends Controller
             'domisili'
         ]));
 
-        return redirect()->route('alumni.create')->with('success', 'Data alumni berhasil disimpan');
+        return redirect()->route('admin.alumni.create')->with('success', 'Data alumni berhasil disimpan');
     }
 
     public function whatsappBlast(Request $request)
@@ -65,19 +66,15 @@ class AlumniController extends Controller
             return back()->with('error', 'Pilih minimal satu alumni');
         }
 
-        // Pecah string jadi array
         $numbers = explode(',', $request->numbers);
 
-        // Normalisasi nomor
         $cleanNumbers = array_map(function ($number) {
             $number = preg_replace('/[^0-9]/', '', $number);
 
-            // Jika diawali 08 → ubah ke 628
             if (str_starts_with($number, '08')) {
                 return '628' . substr($number, 2);
             }
 
-            // Jika sudah 628 → aman
             if (str_starts_with($number, '628')) {
                 return $number;
             }
@@ -85,9 +82,7 @@ class AlumniController extends Controller
             return $number;
         }, $numbers);
 
-        // WhatsApp hanya bisa buka 1 chat
         $phone = $cleanNumbers[0];
-
         $message = urlencode('Halo alumni, ini pesan dari sekolah');
 
         return redirect("https://wa.me/{$phone}?text={$message}");
@@ -100,7 +95,7 @@ class AlumniController extends Controller
         Alumni::findOrFail($id)->delete();
 
         return redirect()
-            ->route('alumni.index')
+            ->route('admin.alumni.index')
             ->with('success', 'Data alumni berhasil dihapus');
     }
 
@@ -115,7 +110,7 @@ class AlumniController extends Controller
         DB::beginTransaction();
 
         try {
-            $header = fgetcsv($file); // baris pertama (header)
+            $header = fgetcsv($file); 
 
             while (($row = fgetcsv($file)) !== false) {
 
@@ -133,7 +128,7 @@ class AlumniController extends Controller
             DB::commit();
 
             return redirect()
-                ->route('alumni.index')
+                ->route('admin.alumni.index')
                 ->with('success', 'Data alumni berhasil diimport');
         } catch (\Exception $e) {
             DB::rollBack();

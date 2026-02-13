@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\VotingSetting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VotingSettingController extends Controller
 {
