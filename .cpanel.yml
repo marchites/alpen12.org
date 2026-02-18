@@ -1,0 +1,5 @@
+---
+deployment:
+tasks:
+- export DEPLOYPATH=/home/u8165388/public_html/alpen12.mydrip.my.id 
+- /bin/cp -r * $DEPLOYPATH
