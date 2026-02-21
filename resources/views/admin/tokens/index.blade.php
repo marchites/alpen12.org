@@ -3,31 +3,32 @@
 @section('content')
 <div class="page-content">
 
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Voting</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tokens</li>
+        </ol>
+    </nav>
+
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
             <h4 class="mb-3 mb-md-0">Voting Tokens</h4>
         </div>
-        <div class="container py-4">
+        <a href="{{ route('admin.tokens.create') }}" class="btn btn-primary">
+            + Tambah Token
+        </a>
+    </div>
 
-            @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
-
-            <div class="card shadow-sm border-0">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
                 <div class="card-body">
+                    <h6 class="card-title">Daftar Token</h6>
+                    <p class="text-muted mb-3">Dibawah ini adalah tabel token, anda bisa menghapus, melihat, hingga mengedit data token.</p>
 
-                    <div class="d-flex justify-content-between mb-3">
-                        <h4 class="fw-bold">Voting Tokens</h4>
-                        <a href="{{ route('admin.tokens.create') }}" class="btn btn-success">
-                            + Create Token
-                        </a>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered align-middle">
-                            <thead class="table-light">
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Nama Alumni</th>
@@ -37,7 +38,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($tokens as $key => $token)
+                               @foreach($tokens as $key => $token)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $token->alumni->nama }}</td>

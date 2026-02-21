@@ -34,8 +34,8 @@
             </p>
 
             <!-- Optional Button -->
-            <a href="{{ url('/') }}" class="btn btn-primary px-4 rounded-3">
-                Kembali ke Beranda
+            <a href="{{ url('/results') }}" class="btn btn-primary px-4 rounded-3">
+                Kembali ke Hasil Voting
             </a>
 
         </div>

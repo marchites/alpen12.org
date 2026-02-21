@@ -1,36 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container ">
+
+    {{-- ================= TOAST ================= --}}
+    @if(session('success'))
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:1100">
+        <div class="toast show">
+            <div class="toast-header">
+                <span class="rounded-circle bg-success me-2"
+                    style="width:10px;height:10px"></span>
+                <strong class="me-auto">Sistem Alumni</strong>
+                <button class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div>
+    @endif
+
+</div>
+
 <div class="page-content">
+
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Alumni</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Database</li>
+        </ol>
+    </nav>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
             <h4 class="mb-3 mb-md-0">Database Alumni</h4>
         </div>
         <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">
-                + Tambah Alumni
-            </a>
-        <div class="container py-4">
+            + Tambah Alumni
+        </a>
+    </div>
 
-            {{-- ================= TOAST ================= --}}
-            @if(session('success'))
-            <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:1100">
-                <div class="toast show">
-                    <div class="toast-header">
-                        <span class="rounded-circle bg-success me-2"
-                            style="width:10px;height:10px"></span>
-                        <strong class="me-auto">Sistem Alumni</strong>
-                        <button class="btn-close" data-bs-dismiss="toast"></button>
-                    </div>
-                    <div class="toast-body">
-                        {{ session('success') }}
-                    </div>
-                </div>
-            </div>
-            @endif
-
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
             {{-- ================= IMPORT CSV ================= --}}
-            <div class="card shadow-sm border-0 mb-4">
+            <div class="card">
                 <div class="card-body">
                     <h6 class="fw-semibold mb-1">Import Data Alumni</h6>
                     <small class="text-muted d-block mb-3">
@@ -64,9 +77,13 @@
                     </small>
                 </div>
             </div>
+        </div>
+    </div>
 
-            {{-- ================= FILTER ================= --}}
-            <div class="card shadow-sm border-0 mb-4">
+    {{-- ================= FILTER ================= --}}
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
                 <div class="card-body">
                     <form method="GET" class="row g-2">
                         <div class="col-md-3">
@@ -102,146 +119,151 @@
                     </form>
                 </div>
             </div>
-
-            {{-- ================= TABLE ================= --}}
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-0">
-
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th style="width:40px"></th>
-                                <th>Nama</th>
-                                <th>Tahun</th>
-                                <th>Jurusan</th>
-                                <th>Pekerjaan</th>
-                                <th>Domisili</th>
-                                <th class="text-center" style="width:150px">Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @forelse($alumni as $a)
-                            <tr>
-                                <td class="text-center">
-                                    <input type="checkbox"
-                                        class="form-check-input wa-checkbox"
-                                        value="{{ $a->no_hp }}">
-                                </td>
-
-                                <td>{{ $a->nama }}</td>
-                                <td>{{ $a->tahun_lulus }}</td>
-                                <td>{{ $a->jurusan }}</td>
-                                <td>{{ $a->pekerjaan }}</td>
-
-                                {{-- Domisili dipotong --}}
-                                <td style="max-width:160px">
-                                    <span class="text-truncate d-inline-block"
-                                        style="max-width:160px"
-                                        title="{{ $a->domisili }}">
-                                        {{ $a->domisili }}
-                                    </span>
-                                </td>
-
-                                <td class="text-center">
-                                    <button class="btn btn-sm btn-outline-primary"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#view{{ $a->id }}">
-                                        View
-                                    </button>
-
-                                    <form action="{{ route('admin.alumni.destroy', $a->id) }}"
-                                        method="POST"
-                                        class="d-inline"
-                                        onsubmit="return confirm('Hapus data ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="7"
-                                    class="text-center text-muted py-4">
-                                    Data alumni belum tersedia
-                                </td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-            {{-- ================= WHATSAPP ================= --}}
-            <form method="POST"
-                action="{{ route('admin.alumni.whatsapp') }}"
-                id="waForm"
-                class="mt-3">
-                @csrf
-                <input type="hidden" name="numbers" id="waNumbers">
-
-                <button class="btn btn-success">
-                    Kirim WhatsApp
-                </button>
-            </form>
-
-            {{-- ================= PAGINATION ================= --}}
-            <div class="mt-3">
-                {{ $alumni->onEachSide(1)->links('pagination::bootstrap-5') }}
-            </div>
-
         </div>
+    </div>
 
-        {{-- ================= MODAL VIEW ================= --}}
-        @foreach($alumni as $a)
-        <div class="modal fade" id="view{{ $a->id }}" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Detail Alumni</h5>
-                        <button class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-sm">
-                            <tr>
-                                <th>Nama</th>
-                                <td>{{ $a->nama }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tahun Lulus</th>
-                                <td>{{ $a->tahun_lulus }}</td>
-                            </tr>
-                            <tr>
-                                <th>Jurusan</th>
-                                <td>{{ $a->jurusan }}</td>
-                            </tr>
-                            <tr>
-                                <th>Pekerjaan</th>
-                                <td>{{ $a->pekerjaan }}</td>
-                            </tr>
-                            <tr>
-                                <th>No HP</th>
-                                <td>{{ $a->no_hp }}</td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td>{{ $a->email }}</td>
-                            </tr>
-                            <tr>
-                                <th>Domisili</th>
-                                <td>{{ $a->domisili }}</td>
-                            </tr>
+    {{-- ================= TABLE ================= --}}
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Data Alumni</h6>
+                    <p class="text-muted mb-3">Dibawah ini adalah tabel alumni, anda bisa menghapus, melihat, hingga mengedit data alumni.</p>
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:40px"></th>
+                                    <th>Nama</th>
+                                    <th>Tahun</th>
+                                    <th>Jurusan</th>
+                                    <th>Pekerjaan</th>
+                                    <th>Domisili</th>
+                                    <th class="text-center" style="width:150px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($alumni as $a)
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="checkbox"
+                                            class="form-check-input wa-checkbox"
+                                            value="{{ $a->no_hp }}">
+                                    </td>
+
+                                    <td>{{ $a->nama }}</td>
+                                    <td>{{ $a->tahun_lulus }}</td>
+                                    <td>{{ $a->jurusan }}</td>
+                                    <td>{{ $a->pekerjaan }}</td>
+
+                                    {{-- Domisili dipotong --}}
+                                    <td style="max-width:160px">
+                                        <span class="text-truncate d-inline-block"
+                                            style="max-width:160px"
+                                            title="{{ $a->domisili }}">
+                                            {{ $a->domisili }}
+                                        </span>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-primary"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#view{{ $a->id }}">
+                                            View
+                                        </button>
+
+                                        <form action="{{ route('admin.alumni.destroy', $a->id) }}"
+                                            method="POST"
+                                            class="d-inline"
+                                            onsubmit="return confirm('Hapus data ini?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="7"
+                                        class="text-center text-muted py-4">
+                                        Data alumni belum tersedia
+                                    </td>
+                                </tr>
+                                @endforelse
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+    {{-- ================= WHATSAPP ================= --}}
+    <form method="POST"
+        action="{{ route('admin.alumni.whatsapp') }}"
+        id="waForm"
+        class="mt-3">
+        @csrf
+        <input type="hidden" name="numbers" id="waNumbers">
+
+        <button class="btn btn-success">
+            Kirim WhatsApp
+        </button>
+    </form>
+
+    {{-- ================= PAGINATION ================= --}}
+    <div class="mt-3">
+        {{ $alumni->onEachSide(1)->links('pagination::bootstrap-5') }}
+    </div>
+
+
+    {{-- ================= MODAL VIEW ================= --}}
+    @foreach($alumni as $a)
+    <div class="modal fade" id="view{{ $a->id }}" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Alumni</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Nama</th>
+                            <td>{{ $a->nama }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tahun Lulus</th>
+                            <td>{{ $a->tahun_lulus }}</td>
+                        </tr>
+                        <tr>
+                            <th>Jurusan</th>
+                            <td>{{ $a->jurusan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pekerjaan</th>
+                            <td>{{ $a->pekerjaan }}</td>
+                        </tr>
+                        <tr>
+                            <th>No HP</th>
+                            <td>{{ $a->no_hp }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ $a->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Domisili</th>
+                            <td>{{ $a->domisili }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @endforeach
 

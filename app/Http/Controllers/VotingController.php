@@ -46,7 +46,7 @@ class VotingController extends Controller
         if ($tokenData->isUsed()) {
             return view('voting.closed', [
                 'title'   => 'Token Sudah Digunakan',
-                'message' => 'Token voting ini sudah digunakan dan tidak dapat dipakai kembali.'
+                'message' => 'Token voting ini sudah digunakan dan tidak dapat digunakan kembali.'
             ]);
         }
 
