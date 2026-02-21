@@ -20,12 +20,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/vote/{token}', [VotingController::class,'index']);
 Route::post('/vote/{token}', [VotingController::class,'store']);
 Route::get('/results', [VotingController::class,'results']);
+Route::get('/alumni/create', [AlumniController::class, 'createAlumni'])->name('alumni.create');
+Route::post('/alumni', [AlumniController::class, 'storeAlumni'])->name('alumni.store');
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index');
     Route::delete('/admin/alumni/{id}', [AlumniController::class, 'destroy'])->name('admin.alumni.destroy');
     Route::post('/admin/alumni/import', [AlumniController::class, 'import'])->name('admin.alumni.import');
     Route::post('/admin/alumni/whatsapp-blast', [AlumniController::class, 'whatsappBlast'])->name('admin.alumni.whatsapp');
+    Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
+    Route::post('/admin/alumni', [AlumniController::class, 'store'])->name('admin.alumni.store');
 
     Route::get('/admin/candidates', [CandidateController::class, 'index'])->name('admin.candidates.index');
     Route::get('/admin/candidates/create', [CandidateController::class, 'create'])->name('admin.candidates.create');

@@ -7,6 +7,9 @@
         <div>
             <h4 class="mb-3 mb-md-0">Database Alumni</h4>
         </div>
+        <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">
+                + Tambah Alumni
+            </a>
         <div class="container py-4">
 
             {{-- ================= TOAST ================= --}}

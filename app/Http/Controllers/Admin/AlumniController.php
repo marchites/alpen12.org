@@ -88,8 +88,6 @@ class AlumniController extends Controller
         return redirect("https://wa.me/{$phone}?text={$message}");
     }
 
-
-
     public function destroy($id)
     {
         Alumni::findOrFail($id)->delete();
@@ -137,4 +135,33 @@ class AlumniController extends Controller
         }
     }
 
+    public function createAlumni()
+    {
+        return view('alumni.create');
+    }
+
+    public function storeAlumni(Request $request)
+    {
+        $request->validate([
+            'nama'        => 'required|string|max:100',
+            'tahun_lulus' => 'required|digits:4',
+            'jurusan'     => 'required|string|max:100',
+            'pekerjaan'   => 'nullable|string|max:100',
+            'no_hp'       => 'required|regex:/^[0-9+]+$/',
+            'email'       => 'nullable|email|max:100',
+            'domisili'    => 'required|string|max:150',
+        ]);
+
+        Alumni::create($request->only([
+            'nama',
+            'tahun_lulus',
+            'jurusan',
+            'pekerjaan',
+            'no_hp',
+            'email',
+            'domisili'
+        ]));
+
+        return redirect()->route('alumni.create')->with('success', 'Data alumni berhasil disimpan');
+    }
 }
