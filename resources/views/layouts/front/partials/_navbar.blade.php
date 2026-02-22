@@ -277,12 +277,12 @@
 	<nav class="bottom-navbar">
 		<div class="container">
 			<ul class="nav page-navigation">
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="dashboard.html">
-						<i class="link-icon" data-feather="box"></i>
-						<span class="menu-title">Dashboard</span>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('home') }}">
+						<i class="link-icon" data-feather="home"></i>
+						<span class="menu-title">Home</span>
 					</a>
-				</li> -->
+				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('alumni.create') }}">
 						<i class="link-icon" data-feather="inbox"></i>

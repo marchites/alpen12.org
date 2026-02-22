@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VotingController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\CandidateController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\VotingTokenController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
