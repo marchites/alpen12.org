@@ -39,9 +39,9 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Layout styles -->
-  <link rel="stylesheet" href="../../../assets/css/demo1/style.css"> 
+  <link rel="stylesheet" href="../../../assets/css/demo1/style.css">
   <link rel="stylesheet" href="../../../assets/css/custom/style.css">
-  
+
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="../../../assets/images/favicon.png" />
@@ -90,6 +90,9 @@ License: For each use you must have a valid license purchased only from above li
                           <i class="btn-icon-prepend" data-feather="twitter"></i>
                           Login with twitter
                         </button> -->
+                        <a href="{{ route('alumni.create') }}">
+                          <button type="button" class="btn btn-outline-primary">Back to Home</button>
+                        </a>
                       </div>
                       <!-- <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign up</a> -->
                     </form>

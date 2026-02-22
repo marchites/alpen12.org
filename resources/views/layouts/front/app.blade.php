@@ -31,20 +31,36 @@
     <!-- endinject -->
 
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/demo1/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/demo3/style.css') }}">
     <!-- End layout styles -->
 
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpeg') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
     <div class="main-wrapper">
-        @yield('content')
+
+        <!-- partial:partials/_navbar.html -->
+        @include('layouts.front.partials._navbar')
+        <!-- partial -->
+
+        <div class="page-wrapper">
+            <div class="page-content">
+
+                @yield('content')
+
+                <!-- partial:partials/_footer.html -->
+                @include('layouts.front.partials._footer')
+                <!-- partial -->
+
+            </div>
+        </div>
     </div>
 
     <!-- core:js -->
     <script src="{{ asset('assets/vendors/core/core.js') }}"></script>
-
     <!-- endinject -->
 
     <!-- Plugin js for this page -->

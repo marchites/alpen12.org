@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VotingController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\CandidateController;
@@ -17,11 +18,14 @@ Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/vote/{token}', [VotingController::class,'index']);
-Route::post('/vote/{token}', [VotingController::class,'store']);
-Route::get('/results', [VotingController::class,'results']);
+Route::get('/vote/{token}', [VotingController::class,'index'])->name('voting');
+Route::post('/vote/{token}', [VotingController::class,'store'])->name('voting.store');
+Route::get('/results', [VotingController::class,'results'])->name('election.results');
 Route::get('/alumni/create', [AlumniController::class, 'createAlumni'])->name('alumni.create');
 Route::post('/alumni', [AlumniController::class, 'storeAlumni'])->name('alumni.store');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index');

@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.front.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Voting Pengurus Alumni 2026</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
-
-<body class="bg-light">
-
+@section('content')
 <div class="container py-5">
 
     <!-- HEADER -->
@@ -121,6 +110,4 @@
         color: #0d6efd;
     }
 </style>
-
-</body>
-</html>
+@endsection

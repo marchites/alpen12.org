@@ -1,7 +1,7 @@
-@extends('layouts.link')
+@extends('layouts.front.app')
 
 @section('content')
-<div class="container py-5">
+<div class="container">
 
     <!-- Header -->
     <div class="text-center mb-5">
