@@ -35,6 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($positions->count() > 0)
                                 @foreach($positions as $key => $position)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
@@ -42,6 +43,15 @@
                                     <td>{{ $position->order }}</td>
                                 </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted">
+                                        Belum ada jabatan.
+                                        <br>
+                                        Silakan klik tombol <strong>+ Tambah Jabatan</strong> untuk membuat jabatan.
+                                    </td>
+                                    @endif
+                                </tr>
                             </tbody>
                         </table>
                     </div>

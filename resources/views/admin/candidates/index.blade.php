@@ -36,6 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($candidates->count() > 0)
                                 @foreach($candidates as $key => $candidate)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
@@ -53,6 +54,15 @@
                                     <td>{{ $candidate->position->name }}</td>
                                 </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">
+                                        Belum ada kandidat.
+                                        <br>
+                                        Silakan klik tombol <strong>+ Tambah Kandidat</strong> untuk membuat kandidat.
+                                    </td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

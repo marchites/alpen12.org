@@ -38,7 +38,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach($tokens as $key => $token)
+                                @if($tokens->count() > 0)
+                                @foreach($tokens as $key => $token)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $token->alumni->nama }}</td>
@@ -57,6 +58,15 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">
+                                        Belum ada token.
+                                        <br>
+                                        Silakan klik tombol <strong>+ Tambah Token</strong> untuk membuat token.
+                                    </td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

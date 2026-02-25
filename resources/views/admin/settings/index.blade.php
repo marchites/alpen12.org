@@ -37,16 +37,27 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($setting)
                                 <tr>
                                     <td>{{ \Carbon\Carbon::parse($setting->start_at)->format('d M Y H:i') }}</td>
                                     <td>{{ \Carbon\Carbon::parse($setting->end_at)->format('d M Y H:i') }}</td>
-                                    <td>@if($setting->is_active)
+                                    <td>
+                                        @if($setting->is_active)
                                         <span class="badge bg-success">Aktif</span>
                                         @else
                                         <span class="badge bg-danger">Nonaktif</span>
                                         @endif
                                     </td>
                                 </tr>
+                                @else
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted">
+                                        Belum ada pengaturan voting.
+                                        <br>
+                                        Silakan klik tombol <strong>Edit Setting</strong> untuk membuat pengaturan.
+                                    </td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
