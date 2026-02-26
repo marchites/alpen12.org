@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="card border-0 shadow-sm">
+    <div class="card mb-4 border-0 shadow-sm">
         <div class="card-body p-5">
             <div class="card-title"><h5>Timeline Pemungutan Suara</h5></div>
             <p class="mb-4">Untuk berpartisipasi dalam proses pemungutan suara, silakan mengikuti langkah-langkah berikut:</p>

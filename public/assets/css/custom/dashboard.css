@@ -1,0 +1,46 @@
+.btn-primary, .wizard > .actions a, .wizard > .actions a:active, .wizard > .actions a:hover, div.tox .tox-button:not(.tox-button--naked):not(.tox-button--secondary), .swal2-popup .swal2-actions button.swal2-confirm, .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+    background-color: #3a9ecb !important;
+    border-color: #3a9ecb !important;
+}
+
+.btn-outline-primary, .fc .fc-button-primary {
+    color: #3a9ecb !important;
+    border-color: #3a9ecb !important;
+}
+
+.sidebar .sidebar-header .sidebar-brand {
+    color: #3a9ecb !important;
+}
+
+.sidebar .sidebar-header .sidebar-brand span {
+    color: #f98300 !important;
+}
+
+.sidebar .sidebar-body .nav .nav-item.active .nav-link {
+    color: #3a9ecb;
+}
+
+.sidebar .sidebar-body .nav .nav-item.active .nav-link .link-icon {
+    color: #3a9ecb;
+}
+
+.sidebar .sidebar-body .nav .nav-item.active .nav-link::before {
+    background-color: #f98300 
+}
+
+.page-item.active .page-link {
+    background-color: #3a9ecb !important;
+    border-color: #3a9ecb !important;
+}
+
+.page-content ol li a {
+    color: #3a9ecb !important;
+} 
+
+footer a {
+    color: #3a9ecb;
+}
+
+footer .text-primary {
+    color: #3a9ecb !important;
+}

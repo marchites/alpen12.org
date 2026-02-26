@@ -37,6 +37,12 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/mascot.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/style.css') }}">
+
+    <!-- End Custom styles -->
 </head>
 
 <body>
@@ -59,6 +65,12 @@
         </div>
     </div>
 
+    <!-- Floating Mascot -->
+    <div class="floating-mascot hidden">
+        <div class="mascot-bubble" id="mascotBubble">Selamat Datang di <br>Official Website Alpen12👋</div>
+        <img src="{{ asset('assets/images/mascot.png') }}" alt="Maskot Alpen12">
+    </div>
+
     <!-- core:js -->
     <script src="{{ asset('assets/vendors/core/core.js') }}"></script>
     <!-- endinject -->
@@ -79,6 +91,7 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard-light.js') }}"></script>
     <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/mascot.js') }}"></script>
     <!-- End custom js for this page -->
 
 </body>

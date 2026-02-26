@@ -2,3 +2,74 @@
     background-image: url(../../images/others/image_1.jpg) !important;
     background-size: cover !important;
 }
+
+.horizontal-menu .navbar .navbar-content .navbar-brand {
+    color: #3a9ecb !important;
+}
+
+.horizontal-menu .navbar .navbar-content .navbar-brand span {
+    color: #f98300 !important
+}
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-title, .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .link-icon, .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .link-arrow {
+    color: #f98300 !important;
+}
+
+.timeline {
+    border-left: 3px solid #f98300 !important;
+    background: rgb(58, 158, 203) !important;
+}
+
+.timeline p, h3 {
+    color: #ffffff !important;
+}
+
+.timeline .event:after {
+    box-shadow: 0 0 0 3px #f98300 !important;
+}
+
+.timeline a {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+}
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item > .nav-link {
+    color: #3a9ecb !important;
+}
+
+.btn-primary, .wizard > .actions a, .wizard > .actions a:active, .wizard > .actions a:hover, div.tox .tox-button:not(.tox-button--naked):not(.tox-button--secondary), .swal2-popup .swal2-actions button.swal2-confirm, .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+    background-color: #3a9ecb !important;
+    border-color: #3a9ecb !important;
+}
+
+.btn-outline-primary, .fc .fc-button-primary {
+    color: #3a9ecb !important;
+    border-color: #3a9ecb !important;
+}
+
+.btn-outline-primary:hover, .fc .fc-button-primary:hover {
+    background-color: #3a9ecb !important;
+    color: #ffffff !important;
+}
+
+footer a {
+    color: #3a9ecb;
+}
+
+footer .text-primary {
+    color: #3a9ecb !important;
+}
+
+.page-content ol li a {
+    color: #3a9ecb !important;
+} 
+
+
+/* Auth Page */
+.noble-ui-logo {
+    color: #3a9ecb !important;
+}
+
+.noble-ui-logo span {
+    color: #f98300 !important;
+}

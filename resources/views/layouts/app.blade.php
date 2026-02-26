@@ -36,6 +36,9 @@
     <!-- End layout styles -->
 
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpeg') }}" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/dashboard.css') }}">
 </head>
 
 <body>

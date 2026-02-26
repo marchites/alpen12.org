@@ -1,0 +1,84 @@
+/* ===== Floating Mascot ===== */
+.floating-mascot {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 9999;
+    cursor: pointer;
+    animation: bounce 2.5s infinite;
+}
+
+/* Hide first (delay effect) */
+.floating-mascot.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* Mascot image */
+.floating-mascot img {
+    width: 150px;
+    height: auto;
+    animation: wave 2s infinite;
+}
+
+/* Chat Bubble */
+.mascot-bubble {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 12px;
+
+    background: #ffffff;
+    color: #111827;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    white-space: nowrap;
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all .4s ease;
+}
+
+/* bubble aktif */
+.mascot-bubble.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* bubble tail */
+.mascot-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 85px;
+    border-top: 8px solid #ffffff;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+/* ===== Animations ===== */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes bubbleFade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Hover effect */
+.floating-mascot:hover img {
+    transform: scale(1.1);
+}
