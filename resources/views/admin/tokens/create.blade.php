@@ -30,7 +30,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Pilih Alumni</label>
-                            <select name="alumni_id" class="form-select" required>
+                            <select class="js-example-basic-single form-select" name="alumni_id" data-width="100%" required>
                                 <option value="">-- Pilih Alumni --</option>
                                 @foreach($alumni as $a)
                                 <option value="{{ $a->id }}">
