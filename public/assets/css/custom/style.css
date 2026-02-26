@@ -64,6 +64,10 @@ footer .text-primary {
     color: #3a9ecb !important;
 } 
 
+.timeline {
+    max-width: 53%;
+}
+
 
 /* Auth Page */
 .noble-ui-logo {

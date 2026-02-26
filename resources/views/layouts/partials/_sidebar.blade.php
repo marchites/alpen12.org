@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Alpen12<span>Dash.</span>
+            alpen12<span>dash.</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
