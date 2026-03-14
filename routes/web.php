@@ -10,11 +10,12 @@ use App\Http\Controllers\Admin\CandidateController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\VotingSettingController;
 use App\Http\Controllers\Admin\VotingTokenController;
+use App\Http\Controllers\Admin\DashboardController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [AuthController::class, 'loginForm'])->name('home');
 
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
@@ -30,6 +31,8 @@ Route::get('/contact/create', [ContactController::class, 'create'])->name('conta
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware('admin')->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    
     Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index');
     Route::delete('/admin/alumni/{id}', [AlumniController::class, 'destroy'])->name('admin.alumni.destroy');
     Route::post('/admin/alumni/import', [AlumniController::class, 'import'])->name('admin.alumni.import');
